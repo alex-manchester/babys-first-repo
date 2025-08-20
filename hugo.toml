@@ -1,0 +1,4 @@
+baseURL = 'https://helloworld.art/'
+languageCode = 'en-us'
+title = 'Hello World!'
+theme = 'ananke'
