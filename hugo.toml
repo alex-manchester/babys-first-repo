@@ -2,3 +2,6 @@ baseURL = 'https://helloworld.art/'
 languageCode = 'en-us'
 title = 'Hello World!'
 theme = 'ananke'
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
