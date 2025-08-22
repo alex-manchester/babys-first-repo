@@ -2,14 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://helloworld.art/</loc>
+    <loc>http://localhost:1313/albums/</loc>
+    <lastmod>2025-08-20T15:29:40-04:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2025-08-20T15:29:40-04:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/albums/test/</loc>
+    <lastmod>2025-08-20T15:29:40-04:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/another-post/</loc>
     <lastmod>2025-08-20T14:03:34-04:00</lastmod>
   </url><url>
-    <loc>https://helloworld.art/posts/</loc>
+    <loc>http://localhost:1313/posts/</loc>
     <lastmod>2025-08-20T14:03:34-04:00</lastmod>
   </url><url>
-    <loc>https://helloworld.art/categories/</loc>
+    <loc>http://localhost:1313/posts/my-first-post/</loc>
+    <lastmod>2025-08-20T13:30:34-04:00</lastmod>
   </url><url>
-    <loc>https://helloworld.art/tags/</loc>
+    <loc>http://localhost:1313/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
   </url>
 </urlset>

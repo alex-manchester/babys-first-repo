@@ -1,0 +1,28 @@
+{{/* layouts/partials/photo.html */}}
+{{ $img := .img }}
+{{ if not $img }}{{ else }}
+  {{ $alt := .alt | default "" }}
+  {{ $class := .class | default "db w-100" }}
+
+  {{/* Create width-based variants (original format) */}}
+  {{ $w480  := $img.Resize "480x q75" }}
+  {{ $w960  := $img.Resize "960x q75" }}
+  {{ $w1600 := $img.Resize "1600x q75" }}
+
+  {{/* Create matching WebP variants */}}
+  {{ $webp480  := $img.Resize "480x webp q75" }}
+  {{ $webp960  := $img.Resize "960x webp q75" }}
+  {{ $webp1600 := $img.Resize "1600x webp q75" }}
+
+  <picture>
+    <source type="image/webp"
+            srcset="{{ $webp480.RelPermalink }} 480w, {{ $webp960.RelPermalink }} 960w, {{ $webp1600.RelPermalink }} 1600w"
+            sizes="(max-width: 1200px) 100vw, 1200px">
+    <img class="{{ $class }}"
+         src="{{ $w960.RelPermalink }}"
+         srcset="{{ $w480.RelPermalink }} 480w, {{ $w960.RelPermalink }} 960w, {{ $w1600.RelPermalink }} 1600w"
+         sizes="(max-width: 1200px) 100vw, 1200px"
+         alt="{{ $alt }}"
+         loading="lazy" decoding="async">
+  </picture>
+{{ end }}

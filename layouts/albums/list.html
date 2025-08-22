@@ -1,0 +1,44 @@
+{{ define "main" }}
+<main class="mw8 center ph3 pv4">
+  <h1 class="f2 lh-title mb3">{{ .Title }}</h1>
+
+  <section class="cf nl3 nr3">
+    {{ range .RegularPages.ByDate.Reverse }}
+      {{ $p := . }}
+      {{ $.Scratch.Delete "cover" }}
+
+      {{/* Prefer explicit cover from front matter */}}
+      {{ with $p.Params.cover }}
+        {{ with $p.Resources.GetMatch . }}
+          {{ $.Scratch.Set "cover" . }}
+        {{ end }}
+      {{ end }}
+
+      {{/* Fallback: first image in the bundle, but only if there is one */}}
+      {{ if not ($.Scratch.Get "cover") }}
+        {{ $imgs := $p.Resources.ByType "image" }}
+        {{ with $imgs }}
+          {{ with index . 0 }}
+            {{ $.Scratch.Set "cover" . }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+
+      {{ $cover := $.Scratch.Get "cover" }}
+
+      <article class="fl w-100 w-50-m w-33-l pa3">
+        <a class="db link dim near-black" href="{{ $p.RelPermalink }}">
+          {{ with $cover }}
+            <img class="db w-100 br2"
+                 src="{{ .RelPermalink }}"
+                 alt="{{ $p.Title }}"
+                 loading="lazy" decoding="async">
+          {{ end }}
+          <h2 class="f4 mt2 mb0">{{ $p.Title }}</h2>
+          {{ with $p.Params.location }}<div class="f6 mid-gray mt1">{{ . }}</div>{{ end }}
+        </a>
+      </article>
+    {{ end }}
+  </section>
+</main>
+{{ end }}

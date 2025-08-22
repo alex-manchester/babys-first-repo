@@ -1,0 +1,12 @@
+{{/* Inputs: .img (resource), .alt (string), .class (string, optional) */}}
+{{ $img := .img }}
+{{ if $img }}
+  {{ $alt := .alt | default "" }}
+  {{ $class := .class | default "db w-100 br2" }}
+  {{/* width-only resize preserves aspect ratio */}}
+  {{ $w960 := $img.Resize "960x q75" }}
+  <img class="{{ $class }}"
+       src="{{ $w960.RelPermalink }}"
+       alt="{{ $alt }}"
+       loading="lazy" decoding="async">
+{{ end }}

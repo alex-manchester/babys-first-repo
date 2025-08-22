@@ -5,3 +5,11 @@ theme = 'ananke'
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+[permalinks]
+  albums = "albums/:slug/"
+  blog = "blog/:year/:month/:slug/"
+[menu]
+  [[menu.main]]
+    name = "Albums"
+    url = "/albums/"
+    weight = 20

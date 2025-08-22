@@ -1,0 +1,20 @@
+{{ define "main" }}
+<main class="mw9 center ph3 pv4">
+  <h1 class="f2 lh-title mb2">{{ .Title }}</h1>
+  <section class="cf nl3 nr3">
+    {{ range .Resources.ByType "image" }}
+      {{ $t := .MediaType.SubType }}
+      <div class="fl w-100 w-50-m w-33-l pa3">
+        {{ if in (slice "jpg" "jpeg" "png" "webp") $t }}
+          {{ $img := .Resize "1200x q75" }}
+          <img class="db w-100 br2" src="{{ $img.RelPermalink }}"
+               alt="{{ or .Title .Name }}" loading="lazy" decoding="async">
+        {{ else }}
+          <img class="db w-100 br2" src="{{ .RelPermalink }}"
+               alt="{{ or .Title .Name }}" loading="lazy" decoding="async">
+        {{ end }}
+      </div>
+    {{ end }}
+  </section>
+</main>
+{{ end }}
